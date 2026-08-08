@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret"
 
 // helper to set cookies
-const setSessionCookie = (req, payload) => {
+const setSessionCookie = (res, payload) => {
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "30d" });
     res.cookie('token', token, {
         httpOnly: true,
@@ -68,7 +68,7 @@ export async function login(req, res) {
 
     const isValid = await user.comparePassword(password);
     if (!isValid) {
-        res.status(401).json({
+        return res.status(401).json({
             error: "Invalid email or password"
         })
     }
