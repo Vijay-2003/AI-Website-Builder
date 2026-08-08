@@ -5,10 +5,10 @@ import { authMiddleware } from '../middleware/authMiddleware.js';
 
 const projectRouter = express.Router();
 
-projectRouter.get("public/:id", getPublicProject);
+projectRouter.get("/public/:id", getPublicProject);
 
 projectRouter.use(authMiddleware);
-projectRouter.post("/", createProject);;
+projectRouter.post("/", createProject);
 projectRouter.get("/", listProjects);
 projectRouter.get("/:id", getProject);
 projectRouter.delete("/:id", deleteProject);

@@ -49,7 +49,7 @@ export async function chat(req, res) {
         const manifest = buildManifest(project.files);
 
         // include all file contents so that AI can do accurate search/replace
-        const relevantFiles = {},
+        const relevantFiles = {};
         for (const [path, entry] of Object.entries(project.files)) {
             relevantFiles[path] = entry.content;
         }

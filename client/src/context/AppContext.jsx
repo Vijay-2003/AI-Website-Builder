@@ -1,8 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import api from '../api/api';
 import toast from 'react-hot-toast'
-import { Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import debounce from 'lodash.debounce'
 
 const AppContext = createContext(undefined);
@@ -146,7 +145,7 @@ export function AppContextProvider({ children }) {
 
       setGeneratingProject(true);
       try {
-        const { data } = await axios.post("/api/projects", { prompt });
+        const { data } = await api.post("/api/projects", { prompt });
         toast.success("AI Agent is planning structure...");
         navigate(`/builder/${data._id}`);
       } catch (err) {
@@ -164,7 +163,7 @@ export function AppContextProvider({ children }) {
       if (!user) return;
 
       try {
-        const { data } = await axios.delete(`/api/projects/${id}`);
+        const { data } = await api.delete(`/api/projects/${id}`);
         setProjects((prev) => prev.filter((p) => p._id !== id));
         toast.success("Project deleted successfully");
       } catch (err) {
@@ -202,7 +201,7 @@ export function AppContextProvider({ children }) {
     () => debounce(async (files, id) => {
       try {
         await api.put(`/api/projects/${id}/files`, { files });
-      } catch (error) {
+      } catch (err) {
         console.error("Failed to auto-save files:", err)
         toast.error("Failed to save code modifications");
       }
