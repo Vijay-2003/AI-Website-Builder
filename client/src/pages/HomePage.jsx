@@ -18,7 +18,7 @@ const HomePage = () => {
     loadProjects,
     handleGenerate,
     handleDelete,
-    logout } = useAppContext();
+    Logout } = useAppContext();
 
   useEffect(() => {
     loadProjects();
@@ -34,7 +34,7 @@ const HomePage = () => {
         </div>
         <div className=' flex items-center gap-4 text-sm font-medium text-zinc-300'>
           <span>{user?.name}</span>
-          <button onClick={logout} className=' py-1.5 px-3 border border-white/20 text-white hover:bg-white/10 text-xs rounded-md cursor-pointer bg-transparent'>
+          <button onClick={Logout} className=' py-1.5 px-3 border border-white/20 text-white hover:bg-white/10 text-xs rounded-md cursor-pointer bg-transparent'>
             Sign Out
           </button>
         </div>

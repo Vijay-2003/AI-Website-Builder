@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 export const GenerationResultSchema = z.object({
     files: z.record(z.string(), z.string()),
     description: z.string().default('Generated project')
