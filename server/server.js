@@ -4,10 +4,11 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connectToDatabase } from './config/db.js';
 import authRouter from './routes/authRoutes.js';
+import projectRouter from './routes/projectRoutes.js';
 
 const app = express();
 
-connectToDatabase();
+await connectToDatabase();
 
 app.use(cors({
     origin: process.env.ORIGINS.split(","),
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
     res.send("Server is live");
 })
 app.use("/api/auth", authRouter);
+app.use("/api/projects", projectRouter);
 
 // centralized erro handler
 app.use((err, _req, res, _next) => {
