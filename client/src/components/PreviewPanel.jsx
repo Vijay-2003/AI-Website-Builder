@@ -1,4 +1,4 @@
-import React, { act, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { SandpackCodeEditor, SandpackLayout, SandpackPreview, SandpackProvider, useSandpack } from '@codesandbox/sandpack-react'
 import { detectDependencies } from '../utils/sandpackUtils';
 import { useAppContext } from '../context/AppContext';
@@ -104,7 +104,7 @@ const PreviewPanel = ({ project, activeFile, showCode }) => {
                         surface3: "#e4e4e7",
                         clickable: "#71717a",
                         base: "#09090b",
-                        disabled: "#alalaa",
+                        disabled: "#a1a1aa",
                         hover: "#18181b",
                         accent: "#18181b",
                         error: "#ef4444",
