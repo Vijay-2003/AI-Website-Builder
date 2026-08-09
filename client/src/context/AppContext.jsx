@@ -215,9 +215,9 @@ export function AppContextProvider({ children }) {
   }, [debouncedSave])
 
   const updateProjectFiles = useCallback(
-    async (params) => {
+    async (files) => {
       if (!activeProject || !user) return;
-      debouncedSave(params.files, activeProject._id);
+      debouncedSave(files, activeProject._id);
     }, [activeProject, user, debouncedSave]
   )
 
